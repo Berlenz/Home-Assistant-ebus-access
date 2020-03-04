@@ -24,7 +24,7 @@ ebus:
   
 sensor:
   - platform: ebus
-    sensors: #defines three sensors
+    sensors:
       - name: Heatpump status #sensor.heatpump_status #any name
         circuit: '21576' #see column 1 of ebusd CSV file
         message: 'status.heatpump_1' #see column 2 of ebusd CSV file
