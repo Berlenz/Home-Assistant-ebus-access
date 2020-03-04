@@ -1,0 +1,12 @@
+{
+  "domain": "ebus",
+  "name": "ebus",
+  "documentation": "",
+  "requirements": [
+    "ebusdpy==0.0.16"
+  ],
+  "dependencies": [],
+  "codeowners": [
+    "@berlenz"
+  ]
+}
