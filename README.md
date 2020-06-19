@@ -17,15 +17,15 @@ Declare your ebus variables in the configuration. The values of the variables ar
 ### Example configuration
 `configuration.yaml`
 ```yaml
-# Define the ebus couplers available in your network
+# Define the ebus daemons available in your network
 ebus:
-  - ipv4_address: 192.168.178.100 #IP address of first eBUS coupler 
+  - ipv4_address: 192.168.178.100 #IP address of first eBUS daemon 
     port: 8888
-    #hub_name: 'ebus_coupler_1' #Only needed if you use two or more eBUS couplers. Default name is 'ebusd'.
+    #hub_name: 'ebus_daemon_1' #Only needed if you use two or more eBUS daemons. Default name is 'ebusd'.
     #time_to_live_s: 5 #optional: time within the last read value is used before a new value is read from the bus. (default: 30 seconds)
-#  - ipv4_address: 192.168.178.101 #IP address of second eBUS coupler
+#  - ipv4_address: 192.168.178.101 #IP address of second eBUS daemon
 #    port: 8888
-#    hub_name: 'ebus_coupler_2'
+#    hub_name: 'ebus_daemon_2'
 #    #time_to_live_s: 5 #optional
 
 sensor:
@@ -35,7 +35,7 @@ sensor:
         circuit: '21576' #see column 1 of ebusd CSV file
         message: 'status.heatpump_1' #see column 2 of ebusd CSV file
         field_to_read: 'status' #see column ??(field) of ebusd CSV file and _templates.csv
-        #hub_name: 'ebus_coupler_1' #Name of the ebus you want to access. Only needed if you use two or more eBUS couplers. Default name is 'ebusd'.
+        #hub_name: 'ebus_daemon_1' #Name of the ebus you want to access. Only needed if you use two or more eBUS daemons. Default name is 'ebusd'.
       - name: 'Temperature Room' #sensor.temperature_room
         circuit: '21576'
         message: 'temperature.room'
@@ -56,7 +56,7 @@ sensor:
         unit_of_measurement: TEMP_CELSIUS
 ```
 
-The variable declaration above uses the definitions in the ebusd CSV file from the ebusd daemon. The CSV file is located in the /etc/ebusd/ folder. Below you will find parts of the CSV file that I use in my ebusd configuration.
+The variable declaration above uses the definitions in the ebusd CSV file from the ebusd daemon. The CSV file is located in the /etc/ebusd/ configuration folder. Below you will find parts of the CSV file that I use in my ebusd configuration.
 ```csv
 # type (r[1-9];w;u),circuit,name,comment,QQ,ZZ,PBSB,ID,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment
 #Ochsner,MF=TEM;ID=21576;SW=0373;HW=0110,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
