@@ -36,19 +36,19 @@ sensor:
         message: 'status.heatpump_1' #see column 2 of ebusd CSV file
         field_to_read: 'status' #see column ??(field) of ebusd CSV file and _templates.csv
         #hub_name: 'ebus_coupler_1' #Name of the ebus you want to access. Only needed if you use two or more eBUS couplers. Default name is 'ebusd'.
-      - name: Temperature Room #sensor.temperature_room
+      - name: 'Temperature Room' #sensor.temperature_room
         circuit: '21576'
         message: 'temperature.room'
         field_to_read: 'temperature'
         icon: mdi:thermometer
         unit_of_measurement: '°C'
-      - name: Temperature Buffer Upper Area #sensor.temperature_buffer_upper_area
+      - name: 'Temperature Buffer Upper Area' #sensor.temperature_buffer_upper_area
         circuit: '21576'
         message: 'temperature.buffer.tpo'
         field_to_read: 'temperature'
         icon: mdi:thermometer
         unit_of_measurement: TEMP_CELSIUS
-      - name: Temperature Heating Manual Setpoint #sensor.temperature_heating_manual_setpoint
+      - name: 'Temperature Heating Manual Setpoint' #sensor.temperature_heating_manual_setpoint
         circuit: '21576'
         message: 'temperature.heating.manual.setpoint'
         field_to_read: 'temperature'
