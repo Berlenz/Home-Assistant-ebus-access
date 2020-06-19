@@ -35,7 +35,7 @@ sensor:
         circuit: '21576' #see column 1 of ebusd CSV file
         message: 'status.heatpump_1' #see column 2 of ebusd CSV file
         field_to_read: 'status' #see column ??(field) of ebusd CSV file and _templates.csv
-        #hub_name: 'ebus_coupler_1' #Name of the ebus you want to access. Only needed if you use two or more eBUS couplers.
+        #hub_name: 'ebus_coupler_1' #Name of the ebus you want to access. Only needed if you use two or more eBUS couplers. Default name is 'ebusd'.
       - name: Temperature Room #sensor.temperature_room
         circuit: '21576'
         message: 'temperature.room'
