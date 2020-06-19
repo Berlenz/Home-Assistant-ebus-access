@@ -17,18 +17,25 @@ Declare your ebus variables in the configuration. The values of the variables ar
 ### Example configuration
 `configuration.yaml`
 ```yaml
+# Define the ebus couplers available in your network
 ebus:
-  ipv4_address: 192.168.178.100 #adapt to your eBUS Coupler unit
-  port: 8888
-  #time_to_live_s: 5 #optional: time within the last read value is used before a new value is read from the bus. (default: 30 seconds)
-  
+  - ipv4_address: 192.168.178.100 #IP address of first eBUS coupler 
+    port: 8888
+    #hub_name: 'ebus_coupler_1' #Only needed if you use two or more eBUS couplers. Default name is 'ebusd'.
+    #time_to_live_s: 5 #optional: time within the last read value is used before a new value is read from the bus. (default: 30 seconds)
+#  - ipv4_address: 192.168.178.101 #IP address of second eBUS coupler
+#    port: 8888
+#    hub_name: 'ebus_coupler_2'
+#    #time_to_live_s: 5 #optional
+
 sensor:
   - platform: ebus
     sensors:
-      - name: Heatpump status #sensor.heatpump_status #any name
+      - name: 'Heatpump status' #sensor.heatpump_status #define name for new sensor here
         circuit: '21576' #see column 1 of ebusd CSV file
         message: 'status.heatpump_1' #see column 2 of ebusd CSV file
         field_to_read: 'status' #see column ??(field) of ebusd CSV file and _templates.csv
+        #hub_name: 'ebus_coupler_1' #Name of the ebus you want to access. Only needed if you use two or more eBUS couplers.
       - name: Temperature Room #sensor.temperature_room
         circuit: '21576'
         message: 'temperature.room'
