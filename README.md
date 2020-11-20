@@ -13,7 +13,7 @@ To install this integration to Home Assistant: 1. download this repository, 2. e
 
 ## Configure
 
-Declare your ebus variables in the configuration. The values of the variables are automatically polled from the ebus.
+Declare your ebus variables in the configuration. Restart Home Assistant after changing configuration.yaml file.
 
 ### Example configuration
 `configuration.yaml`
