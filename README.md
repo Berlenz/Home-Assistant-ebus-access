@@ -5,10 +5,11 @@ A Home Assistant component to communicate via ebus
 
 ### Manualy
 
-Copy `ebus` folder in to your home-assistant `custom_components` folder.
+To run this Home Assistant integration a eBUS daemon must be already installed on your Raspberry Pi or NUC.
+see https://ebusd.eu/
 
-Additionally a eBUS daemon must be installed on your Raspberry Pi or NUC.
-https://ebusd.eu/
+To install this integration to Home Assistant: 1. download this repository, 2. extract the downloaded zip file, 3. copy `ebus` sub-folder in to your home-assistant `custom_components` folder. If you don't know where the `custom_components` folder is, use Google.
+
 
 ## Configure
 
