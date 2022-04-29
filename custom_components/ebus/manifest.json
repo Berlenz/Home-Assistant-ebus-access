@@ -2,8 +2,9 @@
   "domain": "ebus",
   "name": "ebus",
   "documentation": "",
+  "version": "1.0",
   "requirements": [
-    "ebusdpy==0.0.16"
+    "ebusdpy>=0.0.17"
   ],
   "dependencies": [],
   "codeowners": [
