@@ -1,0 +1,59 @@
+# template name,type / templates,divider / values,unit,comment
+#ebus specification types:,,,,
+cntstarts,BCD:3,,,Anlaufzähler
+cntminutes,BCD,,min,Betriebsstunden
+cnthours,BCD:3,,h,Betriebsstunden
+cntfuel,BCD:4,,,Brennstoffmenge
+unit,UCH,0=all;1=l;2=m³,,Einheit
+fueltype,UCH,0=any;1=oil;2=gas,,Brennstoffart
+countertype,UCH,0=starts;1=hours 1;2=hours 2;3=hours 3;4=hours 4;5=modulation;16=amount,,Zählerart
+opdatacyclic,UCH,0x55=stop;0xaa=start,,zyklische Übertragung
+opdatatransfer,UCH,0=stop;1=cyclic;2=event;3=single;3=cyclic and event,,Übertragung
+opdataheat,UCH,0x00=off;0x01=none;0x55=hotwater;0xaa=heating;0xcc=emissioncheck;0xdd=tüv;0xee=controlstop;0x66=hotwater in controlstop;0xbb=hotwater in heating;0xee=controlstop in stage,,Wärmeanforderung
+opdataaction,UCH,0x00=none;0x01=stop pump;0x02=start pump;0x03=stop consumer;0x04=start consumer,,
+desiredtemp:temperature,UCH,,°C,Solltemperatur
+outsidetemp:temperature,SCH,,°C,Außentemperatur
+percent,D2C,,%,
+percent0:percent,UCH,,%,
+percent1:percent,D1C,,%,
+percent2:percent,D2B,,%,
+spercent:percent,SCH,,%,
+temp:temperature,D2C,,°C,Temperatur
+temp0:temperature,UCH,,°C,Temperatur
+temp1:temperature,D1C,,°C,Temperatur
+temp2:temperature,D2B,,°C,Temperatur
+temp3:temperature,D1B,,°C,Temperatur
+press:pressure,D2B,,bar,Druck
+btime:time,BTI,,,Uhrzeit
+bdate:date,BDA,,,Datum
+id,STR:5,,,Geräte-ID
+version,PIN,,,Version
+skip,IGN:1,,,
+,,,,
+#Ochsner types:,,,,
+group,UCH,,,Gruppe
+value,BI0:7,,,Wert
+type,HEX,,,Datentyp
+#unit,HEX,,,Einheit
+unit,UCH,0x02=°C,,Einheit
+maxu:max,UIN,,,Maximum
+minu:min,UIN,,,Minimum
+maxs:max,SIN,10,,Maximum
+mins:min,SIN,10,,Minimum
+command,group;value;type;unit,,,Kommando
+param,command;maxs;mins,,,Parameter
+param1,command;maxs;HEX,,,Parameter
+param2,command;maxs,,,Parameter
+tempt:temperature,SIN,10,°C,Temperatur
+humidity,UIN,,%,
+status,UCH,,,
+percent100:percent,SIN,100,%,
+statusheatpump:status,UCH,0=Switched off;1=Heating mode;2=Lead time heating mode;3=Externally blocked;4=Cooling mode;5=Lead time cooling mode;6=Lead time de-icing mode;7=De-icing mode;8=Error;9=Drain off;10=De-icing blocking time;11=De-icing pre heat;12=De-icing 1;13=De-icing 2;14=De-icing 3;15=Alarm;16=Malfunction;17=Blocked;21=Flow temperature too high or too low;22=Switching hysteresis in heat pump manual operation exceeded;23=Heat source input temperature too high;24=Heat source outlet temperature to low;25=TKAmin Abschaltung;26=Bivalent switch-off;27=Warmwasser Ladesperre;28=Minimum off time;29=Minimum run time,,
+statusheating:status,UCH,0=Switched off;1=Normal heating mode;3=Economy heating mode;4=Frost protection mode;6=Hot water priority;7=Holiday mode;8=Party mode;9=Normal cooling mode;11=Economy cooling mode;13=Manual operation;15=Party mode cooling;16=Drying: heating phase;17=Drying: steady phase;18=Drying: cooling phase;19=Drying: final phase;22=Cooling mode extern;23=Heating mode extern,,
+statusboiler:status,UCH,0=Switched off;1=Normal charge mode;2=Comfort charge mode - Legionella protection;5=Fault;8=Economy charge mode - Energy saving;10=Electric recharging;11=Charge aborted,,
+volume,UIN,10,,
+kwh,UIN,10,kW/h,
+mwh,UIN,,MW/h,
+hours,HCD:2,,h,
+cycles,HCD,,,
+err:errname,UCH,90=HEAT_PUMP,,

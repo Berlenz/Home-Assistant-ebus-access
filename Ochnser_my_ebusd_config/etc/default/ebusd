@@ -1,0 +1,28 @@
+# /etc/default/ebusd:
+# config file for ebusd service.
+
+# Options to pass to ebusd (run "ebusd -?" for more info):
+#EBUSD_OPTS="--scanconfig"
+#EBUSD_OPTS="--configpath=/etc/ebusd/ --device=/dev/ttyUSB0 --latency=20000 --receivetimeout=100000  -p 9999 --port=8888 --httpport==8889 --log=\"all error\" --log=\"all notice\""
+#EBUSD_OPTS="--configpath=/etc/ebusd/ --device=/dev/ttyUSB_EBUS --sendretries=10 --latency=100000 --receivetimeout=100000 --log=\"all error\""
+EBUSD_OPTS="--configpath=/etc/ebusd/ --device=/dev/ttyUSB_EBUS --sendretries=10 --receivetimeout=100000 --log=all:error --port=8888"
+#EBUSD_OPTS="--configpath=/etc/ebusd/ --device=/dev/ttyUSB_EBUS --sendretries=10 --receivetimeout=100000 --port=8888"
+
+# MULTIPLE EBUSD INSTANCES WITH SYSV
+# In order to run multiple ebusd instances on a SysV enabled system, simply
+# define several EBUSD_OPTS with a unique suffix for each. Recommended is to
+# use a number as suffix for all EBUSD_OPTS settings. That number will then be
+# taken as additional "instance" parameter to the init.d script in order to
+# start/stop an individual ebusd instance instead of all instances.
+# Example: (uncomment the EBUSD_OPTS above)
+#EBUSD_OPTS1="--scanconfig -d /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A50285BI-if00-port0 -p 8888 -l /var/log/ebusd1.log"
+#EBUSD_OPTS2="--scanconfig -d /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A900acTF-if00-port0 -p 8889 -l /var/log/ebusd2.log"
+#EBUSD_OPTS3="--scanconfig -d /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A900beCG-if00-port0 -p 8890 -l /var/log/ebusd3.log"
+
+# MULTIPLE EBUSD INSTANCES WITH SYSTEMD
+# In order to run muiltiple ebusd instances on a systemd enabled system, just
+# copy the /usr/lib/systemd/system/ebusd.service file to /etc/systemd/system/
+# with a different name (e.g. ebusd-2.service), remove the line starting with
+# 'EnvironmentFile=', and replace the '$EBUSD_OPTS' with the options for that
+# particular ebusd instance.
+
