@@ -76,7 +76,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     if not sensors:
         return False
 
-    add_entities(sensors)
+    add_entities(sensors, update_before_add=True)
 
     def ebus_write(service):
         """Write value eBUS device."""
@@ -86,7 +86,6 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
                 sensor for sensor in sensors if sensor.entity_id in entity_ids
             ]
 
-            hub_name = service.data.get(CONF_HUB_NAME)
             value = service.data.get(CONF_VALUE)
             for sensor in target_sensors:
                 sensor.ebus_write(value)
@@ -111,51 +110,30 @@ class EbusSensor(RestoreEntity):
     ):
         """Initialize the eBUS sensor."""
         self._hub = hub
-        self._name = name
-        self._icon = icon
-        self._unit_of_measurement = unit_of_measurement
+        self._attr_name = name
+        self._attr_icon = icon
+        self._attr_unit_of_measurement = unit_of_measurement
         self._circuit = circuit
         self._message = message
         self._field = field
         self._data_type = data_type
         self._time_to_live_s = time_to_live_s
-        self._value = None
 
     async def async_added_to_hass(self):
         """Handle entity which will be added."""
         state = await self.async_get_last_state()
         if not state:
             return
-        self._value = state.state
-
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        return self._value
-
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return self._name
-
-    @property
-    def icon(self):
-        """Icon to use in the frontend."""
-        return self._icon
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement."""
-        return self._unit_of_measurement
+        self._attr_state = state.state
 
     def update(self):
         """Update the state of the sensor."""
         try:
             result = self._hub.read(self._circuit, (self._message + ' ' + self._field), self._data_type, self._time_to_live_s)
             if (result is None) or ("ERR:" in result):
-                _LOGGER.error("Error reading ebusd from hub '%s', sensor '%s'", self._hub._name, self._name)
+                _LOGGER.error("Error reading ebusd from hub '%s', sensor '%s'", self._hub._attr_name, self._attr_name)
             else:
-                self._value = result
+                self._attr_state = result
         except RuntimeError as err:
             _LOGGER.error(err)
             raise RuntimeError(err)
