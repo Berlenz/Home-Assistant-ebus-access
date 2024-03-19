@@ -77,6 +77,7 @@ The following example explains how to write a value to the ebus. At 11:45 a.m. t
 `automations.yaml`
 ```yaml
 
+automation:
 - alias: 'Switch on heating'
   trigger:
     platform: time_pattern
